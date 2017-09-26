@@ -72,3 +72,4 @@ project/plugins/project/
 .lib/
 
 **/project
+**/build
