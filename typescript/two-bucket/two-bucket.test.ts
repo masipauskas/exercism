@@ -14,7 +14,7 @@ describe('TwoBucket', () => {
       expect(twoBucket.otherBucket).toEqual(5) // leftover value in the "other" bucket once the goal has been reached
     })
 
-    xtest('starting with bucket two', () => {
+    test('starting with bucket two', () => {
       const starterBuck = Bucket.Two
       const twoBucket = new TwoBucket(buckOne, buckTwo, goal, starterBuck)
       expect(twoBucket.moves()).toEqual(8)
