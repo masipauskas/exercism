@@ -8,14 +8,14 @@ object Change {
     else if (coins.isEmpty || amount < 0) None
     else {
       val coin = coins.head
-      val options = 1 to (amount / coin)
+      val options = ((amount / coin) to 1 by -1).toStream
 
-      val validResult = options
-        .flatMap { count => spendCoins(amount, coin, count, coins.tail) }
+      val validResults = options.flatMap { count => spendCoins(amount, coin, count, coins.tail) }.headOption
+      val validResultsWithoutThisCoin = findFewestCoins2(amount, coins.tail).toSeq
+
+      (validResults.toSeq ++ validResultsWithoutThisCoin)
         .sortBy(_.length)
         .headOption
-
-      validResult orElse findFewestCoins2(amount, coins.tail)
     }
   }
 
