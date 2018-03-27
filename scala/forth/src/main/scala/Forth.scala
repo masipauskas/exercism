@@ -1,0 +1,1 @@
+class Forth extends ForthEvaluator { }
